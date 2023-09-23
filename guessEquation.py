@@ -22,11 +22,11 @@ model = tf.keras.Sequential([l0])
 
 model.compile(loss='mean_squared_error', optimizer=tf.keras.optimizers.Adam(0.1))
 
-history = model.fit(x, y, epochs=10000, verbose=2)
-print("Finished training the model")
+model.fit(x, y, epochs=10000, verbose=2)
+print("The model is done training")
 
-#Predict value
+#Predicting the y value given an x value
 print(model.predict([23]))
 
-#Print what values the machine thinks we're missing
+#Print what variable values the machine thinks we're missing
 print("These are the layer variables: {}".format(l0.get_weights()))
