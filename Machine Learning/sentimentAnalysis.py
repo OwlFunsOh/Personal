@@ -1,3 +1,6 @@
+#guided by this youtube video: https://www.youtube.com/watch?v=QpzMWQvxXWk&t=2228s
+#This project is meant to create an AI that checks to see if a message is
+#positive or negative.
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
