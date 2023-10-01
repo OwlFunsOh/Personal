@@ -1,29 +1,22 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
-from cvzone.ClassificationModule import Classifier
 import numpy as np
 import math
-import tensorflow as tf
+import time
 
-#Followed this video tutorial
-#https://www.youtube.com/watch?v=wa2ARoUUdU8
 #We Train the model in Teachable machine
 
 offset = 20
 imgSize = 300
 counter = 0 
-oldlabels = ["A","B","C"]
-labels = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
-folder = "data/B"
+folder = "data/Z"
 
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1)
-classifier = Classifier("Model/keras_model.h5", "Model/labels.txt")
 #continously run the camera
 while True:
     success, img = cap.read()
-    imgOutput = img.copy()
     hands, img = detector.findHands(img)
     #Detects hand pressence
     if hands:
@@ -55,10 +48,6 @@ while True:
                 imgWhite[:, wGap:wCal+wGap] = imgResize
             except:
                 print("minor error")
-            
-            #Send our image to our model, it well classify img
-            prediction, index = classifier.getPrediction(imgWhite, draw=False)
-            print(prediction, index)
         
         else:
             k = imgSize/w
@@ -73,15 +62,15 @@ while True:
                 imgWhite[hGap:hCal+hGap, :] = imgResize
             except:
                 print("minor error")
-            #Send our image to our model, it well classify img
-            prediction, index = classifier.getPrediction(imgWhite, draw=False)
-            print(prediction, index)
         
-        cv2.putText(imgOutput, labels[index],(x,y-offset), cv2.FONT_HERSHEY_COMPLEX, 2, (255,0,255), 2,)
-        cv2.rectangle(imgOutput, (x-offset,y-offset), (x+w+offset, y+h+-offset), (255,0,255), 2)
         cv2.imshow("ImageCrop",imgCrop)
         cv2.imshow("ImageWhite",imgWhite)
         
         
-    cv2.imshow("Image",imgOutput)
+    cv2.imshow("Image",img)
     key = cv2.waitKey(1)
+    if key == ord("s"):
+        counter += 1
+        cv2.imwrite(f'{folder}/Image_{time.time()}.jpg', imgWhite)
+        print(counter)
+    
