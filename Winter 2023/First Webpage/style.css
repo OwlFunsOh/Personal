@@ -1,0 +1,36 @@
+#Header{
+    text-align: center;
+    background-color: indigo;
+    color: white;
+    margin-top: 0;
+    padding: 25px;
+    font-family: 'Allerta Stencil';
+}
+
+body{
+    background-color: black;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.text1{
+    color:white;
+    text-align: left;
+    object-fit: cover;
+    padding-left: 60%;
+    padding-right: 10%;
+}
+
+#p1{
+    font-size:x-large;
+}
+
+#pic1{
+    float:left;
+    padding-left: 10%
+}
+
+#part1{
+    padding-top: 100px;
+}
