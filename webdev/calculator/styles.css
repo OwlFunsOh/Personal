@@ -1,0 +1,35 @@
+.button-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 10px;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: aquamarine;
+    color: beige;
+}
+
+.button-grid button{
+    font-size: 20px;
+    color: darkblue
+}
+
+.zero{
+    display: grid;
+    grid-column: 1 / span 2;
+    
+}
+
+.equals{
+    display: grid;
+    grid-column: 3;
+}
+
+.bar{
+    display: grid;
+    grid-column: 1 / span 3;
+    height: 80px;
+}
